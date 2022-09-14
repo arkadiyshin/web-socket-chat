@@ -1,9 +1,18 @@
 const webSocketsServerPort = 8000;
 const webSocketServer = require('websocket').server;
 const http = require('http');
+const express = require('express');
 
+const app = express();
 // Spinning the http server and the websocket server.
-const server = http.createServer();
+const server = http.createServer(app);
+
+
+// implement the API part
+app.get("/", (req, res) => {
+  res.send("GET method");
+});
+
 server.listen(webSocketsServerPort);
 console.log('listening on port 8000');
 
