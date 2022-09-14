@@ -22,10 +22,11 @@ const getUniqueID = () => {
 
 wsServer.on('request', function (request) {
   var userID = getUniqueID();
-  console.log((new Date()) + ' Recieved a new connection from origin ' + request.origin + '.');
+  //console.log((new Date()) + ' Recieved a new connection from origin ' + request.origin + '.');
 
   // You can rewrite this part of the code to accept only the requests from allowed origin
   const connection = request.accept(null, request.origin);
+  console.log(`origin ${request.origin}` );
   clients[userID] = connection;
   console.log('connected: ' + userID + ' in ' + Object.getOwnPropertyNames(clients));
 
